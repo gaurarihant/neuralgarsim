@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the associated manuscript."
+title: "NeuralGarSim: Geometry-agnostic Garment Simulation with Neural Fields"
+authors:
+  - family-names: Gaur
+    given-names: Arihant
+  - family-names: Kairanda
+    given-names: Navami
+  - family-names: Theobalt
+    given-names: Christian
+  - family-names: Golyanik
+    given-names: Vladislav
+year: 2026
+preferred-citation:
+  type: generic
+  title: "NeuralGarSim: Geometry-agnostic Garment Simulation with Neural Fields"
+  authors:
+    - family-names: Gaur
+      given-names: Arihant
+    - family-names: Kairanda
+      given-names: Navami
+    - family-names: Theobalt
+      given-names: Christian
+    - family-names: Golyanik
+      given-names: Vladislav
+  year: 2026
+  notes: "In preparation."
+  url: "https://example.com/neuralgarsim-paper"

@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environments
+.venv/
+venv/
+env/
+
+# Generated simulation outputs
+logs/
+logs_tdc/
+runs/
+outputs/
+wandb/
+
+# Local datasets and heavy assets
+data/*
+!data/.gitkeep
+
+# OS/editor files
+.DS_Store
+.idea/
+.vscode/

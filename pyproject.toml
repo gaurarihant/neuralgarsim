@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "garment-tdc"
+version = "0.1.0"
+description = "TDC-based neural garment simulation in 3D Euclidean space"
+requires-python = ">=3.10"
+dependencies = [
+    "torch",
+    "numpy",
+    "scipy",
+    "trimesh",
+    "configargparse",
+    "tqdm",
+    "matplotlib",
+    "imageio",
+    "plyfile",
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+geometry = ["open3d", "pyvista"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

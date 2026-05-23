@@ -1,0 +1,18 @@
+name: lightweight-checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Compile Python sources
+        run: python -m compileall src scripts experiments tests run_garment_tdc.py
+      - name: Import package root
+        run: PYTHONPATH=src python -c "import garment_tdc"

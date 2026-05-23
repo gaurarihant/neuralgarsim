@@ -1,0 +1,13 @@
+torch
+numpy
+scipy
+trimesh
+configargparse
+tqdm
+matplotlib
+imageio
+plyfile
+open3d
+pyvista
+pytorch3d
+pytest

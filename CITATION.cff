@@ -1,5 +1,5 @@
 cff-version: 1.2.0
-message: "If you use this software, please cite the associated manuscript."
+message: "If you use this software, please cite the associated paper."
 title: "NeuralGarSim: Geometry-agnostic Garment Simulation with Neural Fields"
 authors:
   - family-names: Gaur
@@ -12,7 +12,7 @@ authors:
     given-names: Vladislav
 year: 2026
 preferred-citation:
-  type: generic
+  type: conference-paper
   title: "NeuralGarSim: Geometry-agnostic Garment Simulation with Neural Fields"
   authors:
     - family-names: Gaur
@@ -24,5 +24,5 @@ preferred-citation:
     - family-names: Golyanik
       given-names: Vladislav
   year: 2026
-  notes: "In preparation."
-  url: "https://example.com/neuralgarsim-paper"
+  conference: "European Conference on Computer Vision (ECCV)"
+  url: "https://4dqv.mpi-inf.mpg.de/NeuralGarSim/"

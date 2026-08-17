@@ -315,7 +315,10 @@ def plot_displacement(coords, displacements, component_idx, directory, step, sid
         plt.ylabel('Rest coordinate 2')
 
     plt.tight_layout()
-    plt.savefig(os.path.join(directory, f"displacement_{geometry_name}_{component_name}_{step:06d}.png"), dpi=300, bbox_inches='tight')
+    plt.savefig(
+        os.path.join(directory, f"displacement_{geometry_name}_{component_name}_{step:06d}.png"),
+        dpi=300
+    )
     plt.close()
 
 loss_steps = []

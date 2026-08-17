@@ -1,12 +1,16 @@
 # NeuralGarSim: Geometry-Agnostic Garment Simulation with Neural Fields
 
-Official implementation for "NeuralGarSim: Geometry-agnostic Garment Simulation with Neural Fields".
+Official implementation for "NeuralGarSim: Geometry-agnostic Garment Simulation with Neural Fields", accepted at ECCV 2026.
 
-Project page: https://4dqv.mpi-inf.mpg.de/NeuralGarSim/  
-Paper: https://example.com/neuralgarsim-paper  
-Video: https://example.com/neuralgarsim-video
+### [Project Page](https://4dqv.mpi-inf.mpg.de/NeuralGarSim/) | Paper coming soon | [Video](https://youtu.be/ioUgaS19fY4)
 
-[<img src="assets/method.png">](https://example.com/neuralgarsim-video)
+Arihant Gaur, Navami Kairanda, Christian Theobalt, Vladislav Golyanik
+
+[<img src="assets/method.png">](https://youtu.be/ioUgaS19fY4)
+
+## News
+
+- NeuralGarSim has been accepted to the European Conference on Computer Vision (ECCV) 2026.
 
 ## Method Scope
 
@@ -175,12 +179,11 @@ render_output_dir = logs/dress_rebuttal
 ## Citation
 
 ```bibtex
-@misc{gaur2026neuralgarsim,
+@inproceedings{gaur2026neuralgarsim,
   title={NeuralGarSim: Geometry-agnostic Garment Simulation with Neural Fields},
   author={Gaur, Arihant and Kairanda, Navami and Theobalt, Christian and Golyanik, Vladislav},
-  year={2026},
-  note={In Preparation},
-  url={https://example.com/neuralgarsim-paper}
+  booktitle={European Conference on Computer Vision (ECCV)},
+  year={2026}
 }
 ```
 

@@ -1,18 +1,22 @@
-name: lightweight-checks
+name: tests
 
 on:
   push:
   pull_request:
 
 jobs:
-  syntax:
+  pytest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
+      - name: Install lightweight dependencies (CPU torch, no PyTorch3D)
+        run: |
+          pip install torch --index-url https://download.pytorch.org/whl/cpu
+          pip install numpy trimesh configargparse pytest
       - name: Compile Python sources
-        run: python -m compileall src scripts experiments tests run_garment_tdc.py
-      - name: Import package root
-        run: PYTHONPATH=src python -c "import garment_tdc"
+        run: python -m compileall -q src scripts experiments tests run_garment_tdc.py
+      - name: Run tests (PyTorch3D-dependent tests are skipped)
+        run: python -m pytest -q

@@ -157,7 +157,7 @@ def get_config_parser():
     parser.add_argument('--use_udf', action='store_true', help='sample from the fitted UDF when reference_geometry_type is udf')
 
     # additional parameters if the reference geometry is a mesh
-    parser.add_argument('--reference_geometry_source', type=str, default='assets/textured_uniform_1_020.obj', help='source file for reference geometry')
+    parser.add_argument('--reference_geometry_source', type=str, default=None, help='OBJ file of the reference garment. Required when reference_geometry_name is mesh')
     parser.add_argument('--reference_mlp_n_iterations', type=int, default=3000, help='number of iterations for fitting the reference geometry MLP when reference_geometry_type is udf')
     parser.add_argument('--reference_mlp_lrate', type=float, default=5e-6, help='learning rate for the reference geometry MLP when reference_geometry_type is udf')
     parser.add_argument('--reference_boundary_vertices', nargs='*', help='vertices for boundary condition on the reference geometry')

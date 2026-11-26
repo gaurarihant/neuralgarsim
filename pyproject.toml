@@ -5,23 +5,32 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "garment-tdc"
 version = "0.1.0"
-description = "TDC-based neural garment simulation in 3D Euclidean space"
+description = "NeuralGarSim: geometry-agnostic garment simulation with neural fields"
+readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.10"
+# PyTorch3D is also required, but it has no PyPI wheels; see README.
 dependencies = [
-    "torch",
+    "torch>=2.0",
     "numpy",
     "scipy",
     "trimesh",
+    "open3d",
+    "plyfile",
     "configargparse",
     "tqdm",
     "matplotlib",
     "imageio",
-    "plyfile",
+    "tensorboard",
 ]
 
 [project.optional-dependencies]
+render = ["pyvista"]
 dev = ["pytest"]
-geometry = ["open3d", "pyvista"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "src"]

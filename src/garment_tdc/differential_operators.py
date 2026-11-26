@@ -1,4 +1,5 @@
-# Reference: https://github.com/vsitzmann/siren
+# Adapted from SIREN (https://github.com/vsitzmann/siren).
+# Copyright (c) 2020 Vincent Sitzmann. MIT License; see THIRD_PARTY_NOTICES.md.
 
 import torch
 from torch.autograd import grad

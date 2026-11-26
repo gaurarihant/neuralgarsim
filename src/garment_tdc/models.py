@@ -49,7 +49,8 @@ class SirenDeformationField(nn.Module):
 
         return deformations    
 
-# Below code directly taken from DiffUDF: https://github.com/LIA-DiTella/DiffUDF
+# Below code is taken from DiffUDF (https://github.com/LIA-DiTella/DiffUDF).
+# Copyright (c) 2024 Laboratorio de Inteligencia Artificial - UTDT. MIT License; see THIRD_PARTY_NOTICES.md.
 
 class ReLuLayer(nn.Module):
     """A Sine non-linearity layer.

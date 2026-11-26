@@ -22,7 +22,9 @@ wandb/
 
 # Local datasets and heavy assets
 data/*
-!data/.gitkeep
+!data/garments/
+data/garments/*
+!data/garments/tee.obj
 
 # OS/editor files
 .DS_Store

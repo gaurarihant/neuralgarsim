@@ -1,8 +1,8 @@
-# NeuralGarSim: Geometry-Agnostic Garment Simulation with Neural Fields
+# NeuralGarSim: Geometry-agnostic Garment Simulation with Neural Fields
 
 Official implementation for "NeuralGarSim: Geometry-agnostic Garment Simulation with Neural Fields", accepted at ECCV 2026.
 
-### [Project Page](https://4dqv.mpi-inf.mpg.de/NeuralGarSim/) | Paper coming soon | [Video](https://youtu.be/ioUgaS19fY4)
+### [Project Page](https://4dqv.mpi-inf.mpg.de/NeuralGarSim/) | [Paper](https://eccv.ecva.net/virtual/2026/poster/5963) | [Video](https://youtu.be/ioUgaS19fY4)
 
 Arihant Gaur, Navami Kairanda, Christian Theobalt, Vladislav Golyanik
 
@@ -20,25 +20,24 @@ The Belytschko validation experiments are present under `experiments/belytschko/
 
 ## Installation
 
-Use Python 3.10 or newer.
-
-Use `conda`:
+Use Python 3.10 or newer. First install PyTorch for your CUDA version, then PyTorch3D, then this package:
 
 ```bash
-conda create -n garment-tdc python=3.10
-conda activate garment-tdc
-pip install -e ".[geometry,dev]"
+conda create -n neuralgarsim python=3.10
+conda activate neuralgarsim
+pip install torch                # pick the build for your CUDA version from pytorch.org
+pip install --no-build-isolation "git+https://github.com/facebookresearch/pytorch3d.git@stable"
+pip install -e ".[render,dev]"
 ```
 
-Use `uv`:
+PyTorch3D has no PyPI wheels, so it is not listed in `pyproject.toml`; see its [install guide](https://github.com/facebookresearch/pytorch3d/blob/main/INSTALL.md) for prebuilt alternatives. The `render` extra adds PyVista for GIF rendering, and `dev` adds pytest.
+
+Check the install with the test suite and a two-iteration smoke run that needs no mesh:
 
 ```bash
-uv venv --python 3.10
-source .venv/bin/activate
-uv pip install -e ".[geometry,dev]"
+python -m pytest
+python run_garment_tdc.py -c configs/garments/smoke_test.ini
 ```
-
-The simulator uses PyTorch. Mesh-based garment runs also require PyTorch3D and the optional geometry/rendering helpers.
 
 ## Repository Structure
 
@@ -51,27 +50,27 @@ The simulator uses PyTorch. Mesh-based garment runs also require PyTorch3D and t
 - `scripts/evaluate/`: post-processing metrics
 - `scripts/render/`: mesh sequence rendering helper
 - `logs/`: generated outputs
-- `data/`: garment assets
+- `data/garments/`: garment meshes (one sample T-shirt included)
 
 ## Running a Garment Simulation
 
-Place your garment OBJ under `data/garments/` and edit the configs:
+One sample garment ships with the repository: `data/garments/tee.obj`, a T-shirt from the Korosteleva and Lee garment dataset (CC BY 4.0, see Acknowledgements). It is already centred, scaled and Z-up. Simulate it with two handle vertices fixed under gravity:
+
+```bash
+python run_garment_tdc.py -c configs/garments/tee.ini
+```
+
+For your own garment, place the OBJ under `data/garments/` and set the mesh and boundary condition in a config, for example:
 
 ```ini
 reference_geometry_name = mesh
 reference_geometry_type = udf
-reference_geometry_source = data/garments/tshirt.obj
+reference_geometry_source = data/garments/my_garment.obj
 boundary_condition_name = mesh_vertices_moved
 reference_boundary_vertices = [210, 704]
 moved_boundary_mode = towards
 moved_boundary_displacement = 0.05
 material_type = linear
-```
-
-Then run:
-
-```bash
-python run_garment_tdc.py -c configs/garments/tshirt.ini
 ```
 
 Outputs are written to `logs/<expt_name>/`, including:
@@ -196,6 +195,12 @@ This repository builds on ideas and components from the following open-source pr
 - [navamikairanda/neuralclothsim](https://github.com/navamikairanda/neuralclothsim)
 - [vsitzmann/siren](https://github.com/vsitzmann/siren)
 - [LIA-DiTella/DiffUDF](https://github.com/LIA-DiTella/DiffUDF)
+
+The nonlinear material presets (`cotton`, `silk`, `canvas`) use the fitted parameters of Clyde et al., [Modeling and Data-Driven Parameter Estimation for Woven Fabrics](https://doi.org/10.1145/3099564.3099577), SCA 2017.
+
+The sample garment `data/garments/tee.obj` is from the [Dataset of 3D Garments with Sewing Patterns](https://doi.org/10.5281/zenodo.5267549) by Maria Korosteleva and Sung-Hee Lee (NeurIPS 2021 Datasets and Benchmarks), licensed [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). We centred and scaled it and rotated it to Z-up.
+
+Copyright and licence notices for third-party code and data are in `THIRD_PARTY_NOTICES.md`.
 
 ## License
 
